@@ -6,24 +6,20 @@ body {
     justify-content: space-evenly;
     height: 100vh;
     margin: 0;
-    background: url('images/image.jpg') repeat;
+    background: url('resources/images/image.jpg') repeat;
     font-size: 35px;
     color: rgb(255, 0, 174);
 }
 .hh{
     -webkit-text-stroke: 2px #71004f;
     font-weight:900;
-
 }
 .pp{
     -webkit-text-stroke: 2px #71004f;
-
     font-size: 50px;
     font-style: oblique;
     font-weight: 800;
 }
-
-body
 
 .container {
     width: 100%;
@@ -67,17 +63,13 @@ body
     flex-direction: row;
 }
 
-#no-button{
-    
-}
-
 .hidden-message {
     display: none;
     margin-top: 20px;
 }
 
 .move {
-    animation: moveNoMessage 0.5s linear;
+    animation: moveNoMessage 10s linear;
 }
 
 @keyframes moveNoMessage {

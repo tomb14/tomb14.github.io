@@ -1,15 +1,55 @@
 function showMessage(response) {
-  if (response === "No") {
+    if (response === "No") {
+        updateText("The no button is just for visuals");
+        document.getElementsByClassName("image")[0].src = "resources/images/gun.gif";
+    }
+
+    if (response === "Yes") {
+        updateText("Noot noooot see you on the 14th big boi 😘😘");
+        document.getElementsByClassName("image")[0].src = "resources/images/dance.gif";
+
+        // Hide buttons
+        document.getElementById("yes-button").remove();
+        document.getElementById("no-button").remove();
+
+        // Play the sound
+        var buttonSound = document.getElementById("yes-sound");
+        buttonSound.play();
+    }
+}
+
+function updateText(message) {
+    document.getElementById("name").style.display = "none";
+    document.getElementById("question").textContent = message;
+}
+
+document.addEventListener("mousemove", function (event) {
+    // Get the mouse coordinates
+    var mouseX = event.clientX;
+    var mouseY = event.clientY;
+
+    // Get the button element
+    var button = document.getElementById("no-button");
+
+    // Get the button's position and size
+    var buttonRect = button.getBoundingClientRect();
+
+    // Check if the mouse is close to the button
+    if (
+        mouseX >= buttonRect.left && mouseX <= buttonRect.right &&
+        mouseY >= buttonRect.top && mouseY <= buttonRect.bottom
+    ) {
+        // Move the button
+        moveButton();
+    }
+});
+
+function moveButton() {
     const noButton = document.getElementById("no-button");
-    const container = document.querySelector(".container");
     const maxWidth = window.innerWidth - noButton.offsetWidth;
     const maxHeight = window.innerHeight - noButton.offsetHeight;
 
-    // Set button position to absolute
     noButton.style.position = "absolute";
-
-    // Change image source to "gun.gif"
-    document.getElementsByClassName("image")[0].src = "images/gun.gif";
 
     // Generate random coordinates within the visible container
     const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
@@ -19,27 +59,7 @@ function showMessage(response) {
     noButton.style.left = randomX + "px";
     noButton.style.top = randomY + "px";
 
-    // Update text content and hide name message
-    document.getElementById("question").textContent =
-      "The no button is just for visuals";
-    document.getElementById("name").style.display = "none";
-
-    // Optional: You can also add a timeout to reset the position after a few seconds
-  }
-
-  if (response === "Yes") {
-    // Remove name message and no button
-    document.getElementById("name").remove();
-    document.getElementById("no-button").remove();
-
-    // Update text content, show message, and change image source to "dance.gif"
-    const yesMessage = document.getElementById("question");
-    yesMessage.textContent = "LESGOOO see you on the 14th babygirl😘😘";
-    yesMessage.style.display = "block";
-    yesMessage.style.fontStyle = "normal";
-    document.getElementsByClassName("image")[0].src = "images/dance.gif";
-
-    // Remove yes button
-    document.getElementById("yesButton").remove();
-  }
+    // Play the sound
+    var buttonSound = document.getElementById("no-sound");
+    buttonSound.play();
 }
